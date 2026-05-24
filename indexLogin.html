@@ -72,7 +72,7 @@
         <div id="errorMessage" class="error-toast" style="display: none;">
             <div class="error-custom">
                 <div class="d-flex align-items-center gap-2">
-                    <span class="material-symbols-rounded text-danger" id="errorIcon">warning</span>
+                    <span class="material-symbols-rounded text-info" id="errorIcon">warning</span>
                     <strong id="errorTitle" class="me-auto">Error</strong>
                     <button type="button" class="btn-close btn-close-sm" id="closeErrorBtn"></button>
                 </div>
@@ -96,11 +96,12 @@
             const errorMsg = document.getElementById("errorMsgContent");
             const errorIcon = document.getElementById("errorIcon");
 
-            errorIcon.classList.remove("text-success");
+            errorIcon.classList.remove("text-warning", "text-success");
 
             if (type === "error") {
                 errorTitle.innerText = "Login Failed";
                 errorIcon.innerText = "warning";
+                errorIcon.classList.add("text-warning");
                 errorMsg.innerText = message;
             } else if (type === "success") {
                 errorTitle.innerText = "Success";
