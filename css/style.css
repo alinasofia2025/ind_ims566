@@ -3,7 +3,7 @@ body {
     background-color: var(--bs-body-bg);
     transition: background-color 0.2s;
 }
-
+/* login paege design */
 .login-wrapper{
     min-height: 100vh;
     display: flex;
@@ -261,7 +261,7 @@ body {
     font-style: normal;
     font-variation-settings: "wdth" 100;
 }
-
+/* sidebar */
 .custom-sidebar {
     position: fixed;
     top: 0;
@@ -293,7 +293,7 @@ body {
         transition: transform 0.3s ease;
     }
 }
-
+/* sidebar */
 .sidebar-header {
     padding: 1rem;
     font-weight: bold;
@@ -362,6 +362,7 @@ body {
     display: block;
 }
 
+/* dashboard page border design */
 .dash-hero {
     border-radius: 10px;
     background: linear-gradient(90deg, rgba(83, 47, 229, 0.854), rgba(135, 57, 238, 0.731));
@@ -435,7 +436,6 @@ body {
     border-radius: 1rem;
 }
 
-
 .bar-card {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
@@ -452,6 +452,15 @@ body {
     border-radius: 1rem;
     overflow: hidden;
 }
+/* classes card border */
+.class-card {
+    border-color: #7104f6;
+    border: 3px solid #8d1dba;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
+    transition: all 0.3s ease;
+}
+
 .search-icon {
     position: absolute;
     left: 12px;
@@ -485,37 +494,7 @@ body {
 .btn-top {
     object-fit: cover;
 }
-
-.priority-high {
-    background-color: #dc3545;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    display: inline-block;
-}
-
-.priority-medium {
-    background-color: #ffc107;
-    color: black;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    display: inline-block;
-}
-
-.priority-low {
-    background-color: #28a745;
-    color: white;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    display: inline-block;
-}
-
+/* my tasks page */
 .status-completed {
     background-color: #198754;
     color: white;
@@ -545,15 +524,7 @@ body {
     font-weight: 500;
     display: inline-block;
 }
-
-.class-card {
-    border-color: #7104f6;
-    border: 3px solid #8d1dba;
-    border-radius: 1rem;
-    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.15);
-    transition: all 0.3s ease;
-}
-
+/* navbar */
 .navbar{
     padding: 0 8px;
 }
