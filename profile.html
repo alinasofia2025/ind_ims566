@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>TaskTeacher</title>
+
+    <!-- Bootstrap 5 CSS + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- google icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <!-- google fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- chart.js  -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+     <!-- css -->
+     <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<!-- sidebar -->
+ <div id="customSidebar" class="custom-sidebar show-desktop d-flex flex-column bg-body-tertiary shadow-sm">
+    <div class="sidebar-header bg-body-tertiary p-3 border-bottom d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+            <img src="img/tasksteacherlogo.png" alt="TeacherTask Logo" style="height: 35px; width: auto;">
+            <span class="fw-semibold">TeacherTask.com</span>
+        </div>
+        <button id="closeSidebar" class="btn btn-sm btn-outline-danger">
+            <i class="bi bi-x"></i>
+        </button>
+    </div>
+    <!-- sidebar menu -->
+     <div class="sidebar-menu flex-grow-1">
+        <a href="dashboard.html" class="menu-item text-decoration-none">
+            <span class="material-symbols-rounded">Dashboard</span>
+            <span>Dashboard</span>
+        </a>
+            <a href="tasks.html" class="menu-item text-decoration-none">
+                <span class="material-symbols-rounded">list_alt_check</span>
+                <span>Tasks</span>
+            </a>
+            <a href="classes.html" class="menu-item text-decoration-none">
+                <span class="material-symbols-rounded">class</span>
+                <span>Classes</span>
+            </a>
+            <a href="attendance.html" class="menu-item text-decoration-none">
+                <span class="material-symbols-rounded">groups</span>
+                <span>Assignments</span>
+            </a>
+        </div>
+    <!-- teacher profile picture & info -->
+    <div class="sidebar-profile border-top p-3">
+        <div class="d-flex align-items-center">
+            <img src="img/myprofile.jpeg" alt="Profile" class="rounded-circle me-2" width="40" height="40">
+            <div>
+                <div><strong>Teacher Alina Sofia</strong></div>
+                <small>alinasofia@school.moe.edu.my</small>
+            </div>
+        </div>
+        <a href="index.html" class="btn btn-outline-danger btn-sm mt-2 w-100 text-decoration-none">
+            <i class="bi bi-box-arrow-right me-1"></i>
+            Logout
+        </a>
+    </div>
+</div>   
+
+<!-- navbar -->
+ <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary shadow-sm">
+    <div class="container-fluid">
+        <div id="toggleMe" class="main-content">
+            <button id="toggleSidebarDesktop1" class="btn btn-sm border-0 d-none d-lg-inline">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+            <button id="toggleSidebarMobile" class="btn btn-sm border-0 d-inline-block d-md-none">
+                <i class="bi bi-list fs-4"></i>
+            </button>
+        </div>
+        <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-secondary rounded-circle btn-top" id="toggleDarkModeBtn" type="button" title="Toggle dark mode">
+                <i class="bi bi-moon" id="darkModeIcon"></i>
+            </button>
+            <button class="btn p-0 d-flex align-items-center justify-content-center rounded-circle bg-secondary" style="width: 40px; height: 40px;" id="toggleFullscreen" type="button" title="Toggle Fullscreen">
+                <i class="bi bi-fullscreen fs-6"></i>
+            </button>
+            <div class="dropdown">
+                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn p-0 d-flex align-items-center justify-content-center rounded-circle bg-secondary text-white" style="width: 40px; height: 40px;">
+                    <i class="bi bi-bell fs-5"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="classes.html">ASK: 1 ADIL (8:00-9:00)</a></li>
+                    <li><a class="dropdown-item" href="classes.html">ASK: 1 BIJAK (10:00-11:00)</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="classes.html">All Notifications</a></li>
+                </ul>
+            </div>    
+            <div class="dropdown">
+                <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="d-flex align-items-center text-decoration-none">
+                    <img src="img/myprofile.jpeg" alt="Profile" class="rounded-circle" width="40" height="40" style="object-fit: cover;">
+                    <div class="ms-2 d-none d-md-block"></div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item text-danger" href="index.html"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ </nav>       
+ 
+ <!-- main content -->
+  <div class="container-fluid px-0">
+    <div id="mainContent" class="main-content">
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+        
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="d-flex flex-wrap align-items-center gap-4">
+                <img src="img/myprofile.jpeg" alt="Profile" class="profile-avatar">
+                <div>
+                    <h2 class="mb-1">ALINA SOFIA BINTI MOHD FARHAN</h2>
+                    <p class="mb-2 opacity-75">Selangor · SMK SUBANG JAYA</p>
+                    <div class="d-flex gap-2 flex-wrap">
+                        <span class="badge bg-light text-dark">Guru Sepenuh Masa</span>
+                        <span class="badge bg-light text-dark">Grade: DG44</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Grid -->
+        <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-lg-4">
+                <!-- Maklumat Akaun -->
+                <div class="info-card mb-4">
+                    <h6 class="text-primary mb-3"><i class="bi bi-person-badge me-2"></i>MAKLUMAT AKAUN</h6>
+                    <hr class="my-2">
+                    <small class="text-secondary d-block mb-3">Sebarang kemaskini rekod profil, sila rujuk dengan Hal Ehwal Pelajar</small>
+                    
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between mb-2">
+                            <small class="text-secondary">Fakulti</small>
+                            <small class="fw-semibold">Fakulti Sains Maklumat</small>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <small class="text-secondary">No. Telefon</small>
+                            <small class="fw-semibold">010-820 2902</small>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <small class="text-secondary">Emel</small>
+                            <small class="fw-semibold">alinasofia@school.moe.edu.my</small>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-secondary">Emel Alternatif</small>
+                            <small class="fw-semibold">alina.sofia@edu.my</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aspirasi UTAMA -->
+                <div class="info-card">
+                    <h6 class="text-primary mb-3"><i class="bi bi-star me-2"></i>Aspirasi UTAMA</h6>
+                    <hr class="my-2">
+                    <p class="small text-secondary">"Meningkatkan kualiti pendidikan dan melahirkan generasi berfikiran kritis serta kreatif."</p>
+                    <div class="mt-2">
+                        <span class="badge bg-primary">Visionary</span>
+                        <span class="badge bg-primary">Innovative</span>
+                        <span class="badge bg-primary">Dedicated</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Column -->
+            <div class="col-lg-4">
+                <!-- Statistics Cards -->
+                <div class="row g-3 mb-4">
+                    <div class="col-6">
+                        <div class="info-card text-center">
+                            <i class="bi bi-cash-stack fs-2 text-warning"></i>
+                            <div class="stat-number">RM 0.00</div>
+                            <small class="text-secondary">Denda Lewat</small>
+                            <div class="small text-muted">Baki semasa</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="info-card text-center">
+                            <i class="bi bi-book fs-2 text-primary"></i>
+                            <div class="stat-number">8</div>
+                            <small class="text-secondary">Dalam Pinjaman</small>
+                            <div class="small text-muted">Jumlah pinjaman aktif</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="info-card text-center">
+                            <i class="bi bi-clock-history fs-2 text-danger"></i>
+                            <div class="stat-number">2</div>
+                            <small class="text-secondary">Pinjaman Overdue</small>
+                            <div class="small text-muted">Perlu dipulangkan</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="info-card text-center">
+                            <i class="bi bi-archive fs-2 text-secondary"></i>
+                            <div class="stat-number">0</div>
+                            <small class="text-secondary">Hilang</small>
+                            <div class="small text-muted">Belum selesai</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sejarah Pinjaman -->
+                <div class="info-card">
+                    <h6 class="text-primary mb-3"><i class="bi bi-clock-history me-2"></i>Sejarah Pinjaman</h6>
+                    <hr class="my-2">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small">Matematik PPT</span>
+                        <small class="text-muted">15-05-2026</small>
+                        <span class="badge bg-success">Returned</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="small">Science Module</span>
+                        <small class="text-muted">10-05-2026</small>
+                        <span class="badge bg-success">Returned</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="small">English Reference</span>
+                        <small class="text-muted">01-05-2026</small>
+                        <span class="badge bg-warning text-dark">Overdue</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-lg-4">
+                <!-- Tempatan & Rekod -->
+                <div class="info-card mb-4">
+                    <h6 class="text-primary mb-3"><i class="bi bi-geo-alt me-2"></i>Tempatan</h6>
+                    <hr class="my-2">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Bahan ditempah</span>
+                        <span class="fw-semibold">3 item</span>
+                    </div>
+                    <div class="small text-secondary">- Bahan Rujukan SPM</div>
+                    <div class="small text-secondary">- Modul STEM</div>
+                    <div class="small text-secondary">- Kertas Peperiksaan</div>
+                </div>
+
+                <!-- Rekod Aktiviti & Sijil -->
+                <div class="info-card mb-4">
+                    <h6 class="text-primary mb-3"><i class="bi bi-award me-2"></i>Rekod Aktiviti & Sijil</h6>
+                    <hr class="my-2">
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="myReading" checked>
+                        <label class="form-check-label" for="myReading">MyReading (Aktif)</label>
+                    </div>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" id="volunteer">
+                        <label class="form-check-label" for="volunteer">Sukarelawan PUiTM</label>
+                    </div>
+                    <div class="mt-2">
+                        <span class="badge bg-info">Cert. STEM Education</span>
+                        <span class="badge bg-info">Digital Classroom</span>
+                    </div>
+                </div>
+
+                <!-- Denda & Bayaran -->
+                <div class="info-card">
+                    <h6 class="text-primary mb-3"><i class="bi bi-calculator me-2"></i>Denda & Bayaran</h6>
+                    <hr class="my-2">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Jumlah Denda</span>
+                        <span class="fw-semibold">RM 0.00</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Bayaran Tertunggak</span>
+                        <span class="fw-semibold text-success">Tiada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-4 pt-3 border-top text-center text-secondary small">
+            <p>© 2026 TeacherTask | Teacher Profile System</p>
+        </footer>
+    </div>
+</div>
+<!-- BOOTSTRAP JS -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+      <script>
+        const sidebar = document.getElementById("customSidebar");
+        const mainContent = document.getElementById("mainContent");
+        const toggleMe = document.getElementById("toggleMe");
+        const toggleSidebarMobile = document.getElementById("toggleSidebarMobile");
+        const toggleSidebarDesktop1 = document.getElementById("toggleSidebarDesktop1");
+        const closeSidebar = document.getElementById("closeSidebar");
+        const overlay = document.getElementById("sidebarOverlay");
+        const sidebarMenu = document.querySelector(".sidebar-menu");
+
+        const isMobile = () => window.innerWidth < 768;
+
+        function openSidebar(){
+            if(isMobile()){
+                sidebar.classList.add("show-mobile");
+                mainContent.classList.add("pushed");
+                toggleMe.classList.add("pushed");
+                if(overlay) overlay.classList.add("show");
+            } else{
+                sidebar.classList.add("show-desktop");
+                mainContent.classList.add("pushed");
+                toggleMe.classList.add("pushed");
+                localStorage.setItem("sidebarState","open");
+            }
+        }
+
+        function closeSidebarFunc(){
+            if(isMobile()){
+                sidebar.classList.remove("show-mobile");
+                mainContent.classList.remove("pushed");
+                toggleMe.classList.remove("pushed");
+                if(overlay) overlay.classList.remove("show");
+            }else {
+                sidebar.classList.remove("show-desktop");
+                mainContent.classList.remove("pushed");
+                toggleMe.classList.remove("pushed");
+                localStorage.setItem("sidebarState","closed")
+            }
+        }
+        function toggleSidebar(){
+            if(isMobile()){
+                if(sidebar.classList.contains("show-mobile")) {
+                    closeSidebarFunc();
+                }else{
+                    openSidebar();
+
+                }
+            } else{
+                if(sidebar.classList.contains("show-desktop")) {
+                    closeSidebarFunc();
+                }else{
+                    openSidebar();
+                }
+            }
+        }
+        
+        window.addEventListener("DOMContentLoaded", () => {
+            if (!isMobile()) {
+            const savedState = localStorage.getItem("sidebarState");
+            if (savedState === "open") {
+                sidebar.classList.add("show-desktop");
+                mainContent.classList.add("pushed");
+                toggleMe.classList.add("pushed");
+            } else {
+                sidebar.classList.remove("show-desktop");
+                mainContent.classList.remove("pushed");
+                toggleMe.classList.remove("pushed");
+            }
+        }
+    });
+
+    if(overlay) {
+        overlay.addEventListener("click", closeSidebarFunc);
+    }
+
+    window.addEventListener("resize", () => {
+        if (!isMobile()) {
+            if (overlay) overlay.classList.remove("show");
+            const savedState = localStorage.getItem("sidebarState");
+            if (savedState === "open") {
+                sidebar.classList.add("show-desktop");
+                mainContent.classList.add("pushed");
+                toggleMe.classList.add("pushed");
+            } else {
+                sidebar.classList.remove("show-desktop");
+                mainContent.classList.remove("pushed");
+                toggleMe.classList.remove("pushed");
+            }
+            sidebar.classList.remove("show-mobile");
+        } else {
+            sidebar.classList.remove("show-desktop");
+            if (!sidebar.classList.contains("show-mobile")) {
+                mainContent.classList.remove("pushed");
+                toggleMe.classList.remove("pushed");
+            }
+        }
+    });
+
+    if (toggleSidebarMobile) {
+        toggleSidebarMobile.addEventListener("click", toggleSidebar);
+    }
+    if (toggleSidebarDesktop1) {
+        toggleSidebarDesktop1.addEventListener("click", toggleSidebar);
+    }
+    if (closeSidebar) {
+        closeSidebar.addEventListener("click", closeSidebarFunc);
+    }
+
+    if (sidebarMenu) {
+        sidebarMenu.addEventListener("scroll", () => {
+            if (sidebarMenu.scrollTop > 0) {
+                sidebarMenu.classList.add("scrolling");
+            } else {
+                sidebarMenu.classList.remove("scrolling");
+            }
+        });
+    }
+
+    window.addEventListener("click", function(e) {
+        if (isMobile() && sidebar.classList.contains("show-mobile")) {
+            if (toggleSidebarMobile && !sidebar.contains(e.target) && !toggleSidebarMobile.contains(e.target)) {
+                closeSidebarFunc();
+            }
+        }
+    });
+    // darkmode
+    const darkModeBtn = document.getElementById("toggleDarkModeBtn");
+    const darkModeIcon = document.getElementById("darkModeIcon");
+    const htmlEl = document.documentElement;
+
+    function setDarkMode(enabled) {
+        if (enabled) {
+            htmlEl.setAttribute("data-bs-theme", "dark");
+            if (darkModeIcon) {
+                darkModeIcon.classList.remove("bi-moon");
+                darkModeIcon.classList.add("bi-sun-fill");
+            }
+            localStorage.setItem("bsDarkMode", "1");
+        } else {
+            htmlEl.setAttribute("data-bs-theme", "light");
+            if (darkModeIcon) {
+                darkModeIcon.classList.remove("bi-sun-fill");
+                darkModeIcon.classList.add("bi-moon");
+            }
+            localStorage.setItem("bsDarkMode", "0");
+        }
+    }
+
+    (function() {
+        const dark = localStorage.getItem("bsDarkMode") === "1";
+        setDarkMode(dark);
+    })();
+
+    if (darkModeBtn) {
+        darkModeBtn.addEventListener("click", function() {
+            const isDark = htmlEl.getAttribute("data-bs-theme") === "dark";
+            setDarkMode(!isDark);
+        });
+    }
+
+    const fullscreenBtn = document.getElementById("toggleFullscreen");
+    function toggleFullscreen (){
+        if(!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        }else{
+            document.exitFullscreen();
+        }
+    }
+      </script>
+</body>
+</html>
